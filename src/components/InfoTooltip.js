@@ -1,10 +1,9 @@
 import success from '../images/success.svg';
 import error from '../images/error.svg';
-import React from 'react';
+import { useEffect } from 'react';
 
-function InfoTooltip({ isOpen, onClose, isSuccess, name }) {
+function InfoTooltip({ isOpen, onClose, isSuccess, name, title }) {
   const image = isSuccess ? success : error;
-  const title = isSuccess ? 'Вы успешно зарегистрировались' : 'Что-то пошло не так! Попробуйте еще раз.';
 
   function handleOverlayClose(evt) {
     if (evt.target.classList.contains('popup')) {
@@ -12,7 +11,7 @@ function InfoTooltip({ isOpen, onClose, isSuccess, name }) {
     }
   };
     
-  React.useEffect(() => {
+  useEffect(() => {
     function closeByEscape(evt) {
       if(evt.key === 'Escape') {
         onClose();

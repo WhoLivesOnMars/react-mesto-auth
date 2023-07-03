@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from 'react';
 
 function PopupWithForm({ isOpen, onClose, name, title, buttonText, children, userForm, onSubmit }) {
     
@@ -8,7 +8,7 @@ function PopupWithForm({ isOpen, onClose, name, title, buttonText, children, use
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     function closeByEscape(evt) {
       if(evt.key === 'Escape') {
         onClose();

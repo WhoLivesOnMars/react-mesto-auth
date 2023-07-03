@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from 'react';
 
 function ImagePopup({ isOpen, card, onClose }) {
 
@@ -8,7 +8,7 @@ function ImagePopup({ isOpen, card, onClose }) {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     function closeByEscape(evt) {
       if(evt.key === 'Escape') {
         onClose();

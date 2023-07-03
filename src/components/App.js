@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import '../index.css';
 import Header from './Header.js';
 import Main from './Main.js';
@@ -18,22 +18,24 @@ import InfoTooltip from './InfoTooltip.js'
 import { register, authorize, checkToken } from '../utils/auth.js';
 
 function App() {
-  const [currentUser, setCurrentUser] = React.useState({ name: '', about: '' });
-  const [cards, setCards] = React.useState([]);
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
-  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
-  const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState({});
-  const [isInfoTooltipOpen , setInfoTooltipOpen] = React.useState(false);
-  const [isSuccess, setSuccess] = React.useState(false);
-  const [loggedIn, setLoggedIn] = React.useState(false);
-  const [userData, setUserData] = React.useState({});
+  const [currentUser, setCurrentUser] = useState({ name: '', about: '' });
+  const [cards, setCards] = useState([]);
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
+  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState({});
+  const [isInfoTooltipOpen , setInfoTooltipOpen] = useState(false);
+  const [isSuccess, setSuccess] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({});
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  
+  const resultTitle = isSuccess ? 'Вы успешно зарегистрировались' : 'Что-то пошло не так! Попробуйте еще раз.';
 
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (loggedIn){
     Promise.all([api.getCurrentUser(), api.getCards()])
       .then(([userData, cards]) => {
@@ -45,7 +47,7 @@ function App() {
       });
   }}, [loggedIn]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (token) {
       checkToken()
       .then((res) => {
@@ -173,8 +175,6 @@ function App() {
         setLoggedIn(true);
         navigate('/', { replace: true })
       };
-      setSuccess(true);
-      setInfoTooltipOpen(true);
     })
     .catch((err) => {
       console.log(err);
@@ -189,7 +189,7 @@ function App() {
         <Header>
           <NavBar
             email={userData.email}
-            logOut={signOut}
+            signOut={signOut}
             loggedIn={loggedIn}
           />
         </Header>
@@ -257,6 +257,7 @@ function App() {
           isOpen={isInfoTooltipOpen}
           onClose={closeAllPopups}
           isSuccess={isSuccess}
+          title={resultTitle}
         />
       </div>
     </CurrentUserContext.Provider>

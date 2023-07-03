@@ -1,9 +1,7 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, Routes, Route } from 'react-router-dom';
 
 function NavBar({ loggedIn, signOut, email }) {
-  const location = useLocation();
-
   return (
     <nav className="navbar">
       {loggedIn ?
@@ -12,8 +10,11 @@ function NavBar({ loggedIn, signOut, email }) {
           <button className="navbar__button navbar__link" type="button" onClick={signOut}>Выйти</button>
         </> :
         <ul className="navbar__nav"> 
-          {location.pathname !== "/sign-in" && <li><NavLink to="sign-in" className="navbar__link">Войти</NavLink></li>}
-          {location.pathname !== "/sign-up" && <li><NavLink to="sign-up" className="navbar__link">Регистрация</NavLink></li>}
+          <Routes>
+            <Route path="/" element={<li><NavLink to="/sign-up" className="navbar__link">Регистрация</NavLink></li>} />
+            <Route path='/sign-up' element={<li><NavLink to="/sign-in" className="navbar__link">Войти</NavLink></li>} />
+            <Route path='/sign-in' element={<li><NavLink to="/sign-up" className="navbar__link">Регистрация</NavLink></li>} />
+          </Routes>
         </ul>
       }
     </nav>
