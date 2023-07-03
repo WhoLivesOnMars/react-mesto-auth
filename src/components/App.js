@@ -67,6 +67,8 @@ function App() {
 
   function signOut() {
     localStorage.removeItem('token')
+    setLoggedIn(false);
+    setUserData({ email: '' })
     navigate('/sign-in', {replace: true});
   }
 
