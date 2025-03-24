@@ -172,11 +172,11 @@ function App() {
   function handleLogin(email, password) {
     authorize(email, password)
     .then((res) => {
-      setUserData(email);
       if (res.token) {
+        setUserData({ email });
         setLoggedIn(true);
-        navigate('/', { replace: true })
-      };
+        navigate('/', { replace: true });
+      }      
     })
     .catch((err) => {
       console.log(err);
