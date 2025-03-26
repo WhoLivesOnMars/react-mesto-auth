@@ -26,7 +26,7 @@ function Register({ onRegister }) {
       <>
         <div className="authentication__container">
           <h3 className="authentication__title">
-            Регистрация
+            Sign up
           </h3>
           <form className="authentication__form" onSubmit={handleSubmit}>
             <fieldset className="authentication__fieldset">
@@ -51,7 +51,7 @@ function Register({ onRegister }) {
                   id="password"
                   name="password"
                   type="password"
-                  placeholder="Пароль"
+                  placeholder="Password"
                   required
                   minLength="2"
                   maxLength="30" 
@@ -60,12 +60,12 @@ function Register({ onRegister }) {
                 />
                 <span className="authentication__input-error" />
               </div>
-              <button className="authentication__save-button" type="submit" name="registerSubmit">Зарегистрироваться</button>
+              <button className="authentication__save-button" type="submit" name="registerSubmit">Sign up</button>
             </fieldset>
           </form>
           <div className="authentication__signin">
-            <p>Уже зарегистрированы?</p>
-            <Link to="/sign-in" className="authentication__login-link">Войти</Link>
+            <p>Already have an account?</p>
+            <Link to="/sign-in" className="authentication__login-link">Sign in</Link>
           </div>
         </div>
       </>

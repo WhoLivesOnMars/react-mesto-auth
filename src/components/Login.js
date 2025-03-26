@@ -28,7 +28,7 @@ function Login({ onLogin }) {
     return (
       <div className="authentication__container">
         <h3 className="authentication__title">
-          Вход
+          Sign in
         </h3>
         <form className="authentication__form" onSubmit={handleSubmit}>
           <fieldset className="authentication__fieldset">
@@ -53,7 +53,7 @@ function Login({ onLogin }) {
                 id="password"
                 name="password"
                 type="password"
-                placeholder="Пароль"
+                placeholder="Password"
                 required
                 minLength="2"
                 maxLength="40" 
@@ -62,7 +62,7 @@ function Login({ onLogin }) {
               />
               <span className="authentication__input-error" />
             </div>
-            <button className="authentication__save-button" type="submit" name="registerSubmit" onSubmit={handleSubmit}>Войти</button>
+            <button className="authentication__save-button" type="submit" name="registerSubmit" onSubmit={handleSubmit}>Sign in</button>
           </fieldset>
         </form>
       </div>

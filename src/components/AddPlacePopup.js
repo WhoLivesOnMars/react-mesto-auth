@@ -31,10 +31,10 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   return (
     <PopupWithForm
       name="addPlace"
-      title="Новое место"
+      title="New Photo"
       isOpen={isOpen}
       onClose={onClose}
-      buttonText="Создать"
+      buttonText="Add"
       onSubmit={handleAddPlaceSubmit}
     >
       <div className="popup__field">
@@ -42,7 +42,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
           id="title-input"
           type="text"
           name="name"
-          placeholder="Название"
+          placeholder="Photo title"
           className="popup__input item-form__input item-form__input_type_title"
           required
           minLength="2"
@@ -57,7 +57,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
           id="link-input"
           type="url"
           name="link"
-          placeholder="Ссылка на картинку"
+          placeholder="Image link"
           className="popup__input item-form__input item-form__input_type_link"
           required 
           value={link}
