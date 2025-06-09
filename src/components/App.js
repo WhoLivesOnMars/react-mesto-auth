@@ -32,7 +32,7 @@ function App() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   
-  const resultTitle = isSuccess ? 'Вы успешно зарегистрировались' : 'Что-то пошло не так! Попробуйте еще раз.';
+  const resultTitle = isSuccess ? 'Registration successful!' : 'Oops! Something went wrong. Please try again.';
 
 
   useEffect(() => {
